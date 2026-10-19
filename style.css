@@ -36,11 +36,13 @@ nav ul a.on{background:var(--sun);color:#161936}
   background:radial-gradient(55% 55% at 88% 92%,var(--h3) 0,transparent 70%),radial-gradient(45% 45% at 5% 0,var(--h2) 0,transparent 70%),var(--h1)}
 .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(70% 70% at 30% 40%,#000,transparent);-webkit-mask-image:radial-gradient(70% 70% at 30% 40%,#000,transparent)}
 .hero .wrap{width:100%;max-width:1100px;margin:0 auto;padding:0 24px}
+
 .hero-grid{display:grid;grid-template-columns:1.1fr 1.1fr;gap:48px;align-items:center;text-align:left}
+
 .hello{display:inline-flex;align-items:center;gap:10px;font-weight:500;padding:7px 16px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);margin-bottom:22px}
 .hello::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(185,240,211,.3)}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(3.2rem,8.5vw,7.5rem);line-height:.92;letter-spacing:-.045em;text-align:left}
-h1 span{display:block;overflow:hidden;padding-bottom:.07em}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.8rem, 6.5vw, 6.5rem);line-height:.95;letter-spacing:-.045em;text-align:left;white-space:nowrap;}
+h1 span{display:inline-block;overflow:hidden;padding-bottom:.07em}
 h1 i{display:block;font-style:normal;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
 h1 span+span i{animation-delay:.12s;color:var(--sun)}
 @keyframes rise{from{transform:translateY(105%)}to{transform:none}}
@@ -80,7 +82,6 @@ h1 span+span i{animation-delay:.12s;color:var(--sun)}
 .profile-card:hover {
   transform: translateY(-8px) scale(1.01);
 }
-
 
 /* Photo Container */
 .avatar-frame {
@@ -135,48 +136,51 @@ h1 span+span i{animation-delay:.12s;color:var(--sun)}
   pointer-events: none;
 }
 
-/* Floating Badges */
+/* Floating Badges - Larger text and clean spacing */
 .floating-chip {
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  background: rgba(22, 25, 54, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  gap: 12px;
+  padding: 12px 18px;
+  background: rgba(22, 25, 54, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(14px);
-  border-radius: 20px;
+  border-radius: 22px;
   color: #fff;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
   animation: floatAnim 4s ease-in-out infinite;
   z-index: 2;
+  white-space: nowrap; /* Keeps text in one clean line */
 }
 
 .chip-icon {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 .floating-chip b {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.98rem; /* Increased from 0.85rem */
   line-height: 1.2;
+  font-weight: 700;
 }
 
 .floating-chip span {
   display: block;
-  font-size: 0.74rem;
+  font-size: 0.82rem; /* Increased from 0.74rem */
   color: var(--mint);
+  font-weight: 500;
 }
 
 .chip-top {
-  top: -14px;
-  left: -18px;
+  top: -16px;
+  left: -22px;
   animation-delay: 0s;
 }
 
 .chip-bottom {
-  bottom: -14px;
-  right: -18px;
+  bottom: -16px;
+  right: -22px;
   animation-delay: 2s;
 }
 
