@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Does an Array Work in C? | Alwin Sajan</title>
+<meta name="description" content="A beginner-friendly guide to arrays in C: how one variable can store many values.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232F45FF'/><text x='50' y='70' font-size='60' font-family='sans-serif' font-weight='800' text-anchor='middle' fill='%23FFD23F'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bar" aria-hidden="true"></div>
+
+<nav aria-label="Main">
+  <a class="logo" href="index.html">Alwin Sajan</a>
+  <ul>
+    <li><a href="index.html#about">About</a></li>
+    <li><a class="on" href="index.html#blog">Blog</a></li>
+    <li><a href="index.html#linkedin">LinkedIn</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="art-head">
+  <div class="wrap">
+    <a class="back" href="index.html#blog">← Back to home</a>
+    <h1>How does an array work? How can one variable store many values?</h1>
+    <p>A beginner’s guide to arrays in C.</p>
+    <div class="meta"><span>C programming</span><span>19 October 2026</span><span>4 min read</span></div>
+  </div>
+</header>
+
+<article class="article">
+
+<h2 style="margin-top:0">Introduction</h2>
+<p>In every programming language, we often need to store values of the same type. For example, a program might need to keep track of the marks of many students. If we create a variable for each mark, the code becomes long and hard to handle.</p>
+<p>In the C programming language, an array gives us a way to solve this problem. It lets us store many values using just one variable name.</p>
+
+<h2>What is an array?</h2>
+<p>An array is a programming tool that stores a group of values of the same type in an orderly arrangement, one after another in memory.</p>
+<figure class="code"><figcaption>array.c</figcaption><pre><code class="lang-c">int marks[5] = {85, 72, 90, 67, 88};</code></pre></figure>
+<p>Here <code class="i">marks</code> is the name of the array, and <code class="i">5</code> means it can hold five values.</p>
+
+<div class="cells light" aria-label="Array with five values and their indexes">
+  <div class="cell"><b>85</b><span>[0]</span></div>
+  <div class="cell"><b>72</b><span>[1]</span></div>
+  <div class="cell"><b>90</b><span>[2]</span></div>
+  <div class="cell"><b>67</b><span>[3]</span></div>
+  <div class="cell"><b>88</b><span>[4]</span></div>
+</div>
+
+<div class="note">In an array we start counting from index <b>0</b>. So <code class="i">marks[0]</code> is 85 and <code class="i">marks[2]</code> is 90.</div>
+
+<h2>Why use arrays?</h2>
+<p>Without arrays, we might write code like this:</p>
+<figure class="code"><figcaption>without-array.c</figcaption><pre><code class="lang-c">int mark1, mark2, mark3, mark4, mark5; // and this could go on forever</code></pre></figure>
+<p>With an array, we only need to write:</p>
+<figure class="code"><figcaption>with-array.c</figcaption><pre><code class="lang-c">int marks[5];</code></pre></figure>
+<p>Using arrays makes our programs easier to organize. It also helps us process all the values together, especially when we use loops.</p>
+
+<h2>Arrays and loops</h2>
+<p>Loops work very well with arrays.</p>
+<figure class="code"><figcaption>loop.c</figcaption><pre><code class="lang-c">for (i = 0; i &lt; 5; i++)
+{
+    printf("%d ", marks[i]);
+}</code></pre></figure>
+<p>This loop goes through each element of the array, from index 0 to 4. Output:</p>
+<figure class="code out"><figcaption>output</figcaption><pre>85 72 90 67 88</pre></figure>
+<p>This is very helpful when we have a large number of values.</p>
+
+<h2>Practical example: student marks</h2>
+<p>One everyday use of arrays is storing a student’s marks.</p>
+<figure class="code"><figcaption>marks.c</figcaption><pre><code class="lang-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int marks[5], i, total = 0;
+    float average;
+
+    printf("Enter marks of 5 subjects:\n");
+    for (i = 0; i &lt; 5; i++) {
+        scanf("%d", &amp;marks[i]);
+        total = total + marks[i];
+    }
+
+    average = total / 5.0;
+    printf("Total = %d\n", total);
+    printf("Average = %.2f\n", average);
+    return 0;
+}</code></pre></figure>
+<p>Sample output:</p>
+<figure class="code out"><figcaption>output</figcaption><pre>Enter marks of 5 subjects:
+85
+72
+90
+67
+88
+Total = 402
+Average = 80.40</pre></figure>
+<p>Here the five marks are stored in one array named <code class="i">marks</code>. The <code class="i">for</code> loop reads each mark, adds them up, and then we find the average.</p>
+
+<h2>Where are arrays used?</h2>
+<p>Arrays have many real-world uses, such as:</p>
+<ul>
+  <li>🎓 <b>Student systems:</b> storing marks</li>
+  <li>🏨 <b>Hotel systems:</b> storing room prices</li>
+  <li>🎮 <b>Games:</b> storing player scores</li>
+  <li>⚡ <b>Electricity systems:</b> storing monthly readings</li>
+  <li>🏥 <b>Hospital systems:</b> storing patient information</li>
+</ul>
+<p>For instance, hotel room prices can be saved like this:</p>
+<figure class="code"><figcaption>hotel.c</figcaption><pre><code class="lang-c">int roomPrice[5] = {2000, 2500, 3000, 4000, 5000};</code></pre></figure>
+
+<h2>Advantages of arrays</h2>
+<ul class="dots">
+  <li>We can store many values using just one variable name.</li>
+  <li>It reduces the amount of code.</li>
+  <li>It works smoothly with loops.</li>
+  <li>It helps in doing calculations, searching and sorting.</li>
+</ul>
+<div class="note"><b>One downside:</b> an array usually holds values of the same data type, and its size cannot change after it is declared.</div>
+
+<h2>Conclusion</h2>
+<p>Arrays are one of the most important ideas in C programming because they give us a simple way to store and manage many related values. Instead of making many variables, we can use a single array and reach each value by its index.</p>
+<p>When arrays are used with loops, they become even more powerful for handling large sets of data. From student marks to hotel prices and game scores, arrays are a basic idea with lots of practical uses.</p>
+
+<div class="end">
+  <h3>Enjoyed this post?</h3>
+  <p>I share more of what I’m learning on LinkedIn.</p>
+  <a class="btn solid" href="https://www.linkedin.com/in/alwin-sajan" rel="noopener" target="_blank">Follow on LinkedIn</a>
+</div>
+
+</article>
+
+<footer style="background:var(--chalk);padding:0 0 30px;color:var(--muted)"><div class="wrap">© <span class="yr"></span> Alwin Sajan</div></footer>
+<script src="script.js"></script>
+</body>
+</html>
