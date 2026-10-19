@@ -19,7 +19,7 @@ if (tg) {
   paint();
 }
 
-// Nav: full width at the top, compact pill after scrolling
+// Nav: full width at top, compact pill after scrolling
 var nav = document.querySelector('nav');
 var bar = document.querySelector('.bar');
 function onScroll() {
@@ -42,41 +42,80 @@ document.querySelectorAll('code.lang-c').forEach(function (el) {
   });
 });
 
-// Interactive array with meme captions
+// Upgraded Interactive Array Workbench (Moved to blog page)
 var play = document.getElementById('play');
 if (play) {
   var cells = play.querySelectorAll('.cell');
   var data = [
-    ['85', 'COUNTING STARTS AT ZERO. SURPRISE.', '😎'],
-    ['72', 'ONE VARIABLE. MANY VALUES. MAGIC.', '🪄'],
-    ['90', 'THE MIDDLE CHILD OF THE ARRAY', '😌'],
-    ['67', 'ONE MORE STEP AND YOU’RE ALMOST OUT OF BOUNDS', '😬'],
-    ['88', 'THE LAST ONE. INDEX 5 DOES NOT EXIST.', '💀']
+    { val: '85', addr: '0x2000', msg: 'COUNTING STARTS AT ZERO. FIRST ELEMENT.', emoji: '😎' },
+    { val: '72', addr: '0x2004', msg: '4 BYTES LATER IN RAM. CONTIGUOUS MEMORY.', emoji: '🪄' },
+    { val: '90', addr: '0x2008', msg: 'THE HIGHEST VALUE IN THIS ARRAY!', emoji: '🏆' },
+    { val: '67', addr: '0x200C', msg: 'ONE MORE STEP BEFORE THE BOUNDARY.', emoji: '😬' },
+    { val: '88', addr: '0x2010', msg: 'LAST VALID ELEMENT AT INDEX 4.', emoji: '💀' }
   ];
   var meme = document.getElementById('meme'), mt = document.getElementById('mt'),
       mb = document.getElementById('mb'), em = document.getElementById('em'), out = document.getElementById('out');
-  var select = function (i) {
-    cells.forEach(function (c, j) { c.classList.toggle('on', i === j); c.setAttribute('aria-pressed', i === j); });
-    mt.textContent = 'marks[' + i + '] = ' + data[i][0];
-    mb.textContent = data[i][1];
-    em.textContent = data[i][2];
+
+  var selectCell = function (i) {
+    cells.forEach(function (c, j) { 
+      c.classList.toggle('on', i === j); 
+      c.setAttribute('aria-pressed', i === j); 
+    });
+    mt.textContent = 'marks[' + i + '] = ' + data[i].val;
+    mb.textContent = data[i].msg;
+    em.textContent = data[i].emoji;
     meme.classList.remove('pop'); void meme.offsetWidth; meme.classList.add('pop');
   };
+
   cells.forEach(function (c, i) {
-    c.addEventListener('click', function () { select(i); out.textContent = '> marks[' + i + '] gives ' + data[i][0]; });
+    c.addEventListener('click', function () { 
+      selectCell(i); 
+      out.textContent = '> Accessing marks[' + i + '] at RAM Address ' + data[i].addr + ' → Value = ' + data[i].val; 
+    });
   });
+
+  // Action 1: For-loop traversal
   var run = document.getElementById('run');
-  run.addEventListener('click', function () {
-    var i = 0, text = 'Output: ';
-    run.disabled = true;
-    var t = setInterval(function () {
-      select(i);
-      text += data[i][0] + ' ';
-      out.textContent = text;
-      i++;
-      if (i === data.length) { clearInterval(t); out.textContent = text + '✓ loop finished'; run.disabled = false; }
-    }, 700);
-  });
+  if (run) {
+    run.addEventListener('click', function () {
+      var i = 0, text = 'Loop Output: ';
+      run.disabled = true;
+      var t = setInterval(function () {
+        selectCell(i);
+        text += data[i].val + ' ';
+        out.textContent = text;
+        i++;
+        if (i === data.length) { 
+          clearInterval(t); 
+          out.textContent = text + ' | ✓ loop finished (i = 5 terminated)'; 
+          run.disabled = false; 
+        }
+      }, 700);
+    });
+  }
+
+  // Action 2: Find Max value
+  var findMaxBtn = document.getElementById('find-max');
+  if (findMaxBtn) {
+    findMaxBtn.addEventListener('click', function() {
+      var maxIdx = 2; // 90 is max
+      selectCell(maxIdx);
+      out.textContent = '> Max mark found at marks[' + maxIdx + '] = ' + data[maxIdx].val;
+    });
+  }
+
+  // Action 3: Edit random cell value
+  var editBtn = document.getElementById('edit-val');
+  if (editBtn) {
+    editBtn.addEventListener('click', function() {
+      var randomIdx = Math.floor(Math.random() * data.length);
+      var newVal = Math.floor(Math.random() * 30) + 70; // random score between 70-100
+      data[randomIdx].val = String(newVal);
+      cells[randomIdx].querySelector('b').textContent = newVal;
+      selectCell(randomIdx);
+      out.textContent = '> Updated marks[' + randomIdx + '] value to ' + newVal;
+    });
+  }
 }
 
 // Tabs
