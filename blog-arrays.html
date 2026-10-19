@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){}})();</script>
 <title>How Does an Array Work in C? | Alwin Sajan</title>
 <meta name="description" content="A beginner-friendly guide to arrays in C: how one variable can store many values.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232F45FF'/><text x='50' y='70' font-size='60' font-family='sans-serif' font-weight='800' text-anchor='middle' fill='%23FFD23F'>A</text></svg>">
@@ -18,10 +19,12 @@
   <a class="logo" href="index.html">Alwin Sajan</a>
   <ul>
     <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
     <li><a class="on" href="index.html#blog">Blog</a></li>
     <li><a href="index.html#linkedin">LinkedIn</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
+  <button class="tg" type="button" aria-label="Switch to dark mode"></button>
 </nav>
 
 <header class="art-head">
@@ -113,6 +116,17 @@ Average = 80.40</pre></figure>
 <p>For instance, hotel room prices can be saved like this:</p>
 <figure class="code"><figcaption>hotel.c</figcaption><pre><code class="lang-c">int roomPrice[5] = {2000, 2500, 3000, 4000, 5000};</code></pre></figure>
 
+<h2>Common mistakes</h2>
+<p>These four mistakes catch almost every beginner at least once.</p>
+<ul class="dots">
+  <li><b>Counting from 1.</b> The first element is <code class="i">marks[0]</code>, not <code class="i">marks[1]</code>.</li>
+  <li><b>Going out of bounds.</b> An array of size 5 has no <code class="i">marks[5]</code>. The last index is 4.</li>
+  <li><b>Forgetting the &amp; in scanf.</b> Write <code class="i">scanf("%d", &amp;marks[i])</code> to store the value.</li>
+  <li><b>Using values before setting them.</b> A new array without values holds random leftovers.</li>
+</ul>
+<figure class="code"><figcaption>out-of-bounds.c</figcaption><pre><code class="lang-c">int marks[5] = {85, 72, 90, 67, 88};
+printf("%d", marks[5]);   // wrong: valid indexes are 0 to 4</code></pre></figure>
+
 <h2>Advantages of arrays</h2>
 <ul class="dots">
   <li>We can store many values using just one variable name.</li>
@@ -125,6 +139,28 @@ Average = 80.40</pre></figure>
 <h2>Conclusion</h2>
 <p>Arrays are one of the most important ideas in C programming because they give us a simple way to store and manage many related values. Instead of making many variables, we can use a single array and reach each value by its index.</p>
 <p>When arrays are used with loops, they become even more powerful for handling large sets of data. From student marks to hotel prices and game scores, arrays are a basic idea with lots of practical uses.</p>
+
+<h2>Test yourself</h2>
+<div class="quiz" data-a="1" data-yes="Correct! Index 3 is the fourth value, which is 67." data-no="Not quite. Counting starts at 0, so index 3 is the fourth value.">
+  <p><b>Quick check:</b> with <code class="i">int marks[5] = {85, 72, 90, 67, 88};</code> what is <code class="i">marks[3]</code>?</p>
+  <div class="opts"><button type="button">90</button><button type="button">67</button><button type="button">88</button></div>
+  <p class="res" role="status"></p>
+</div>
+<div class="quiz" data-a="2" data-yes="Correct! The array has 5 values, so the valid indexes are 0 to 4." data-no="Not quite. Five values means indexes 0, 1, 2, 3 and 4.">
+  <p><b>Another one:</b> what is the last valid index of <code class="i">int marks[5]</code>?</p>
+  <div class="opts"><button type="button">5</button><button type="button">6</button><button type="button">4</button></div>
+  <p class="res" role="status"></p>
+</div>
+
+<div class="note">
+  <b>Key takeaways</b>
+  <ul class="dots">
+    <li>One array name can hold many values of the same type.</li>
+    <li>Indexes start at 0 and end at size minus 1.</li>
+    <li>Loops and arrays work best together.</li>
+    <li>The size is fixed when you declare the array.</li>
+  </ul>
+</div>
 
 <div class="end">
   <h3>Enjoyed this post?</h3>
