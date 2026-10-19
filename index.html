@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){}})();</script>
 <title>Alwin Sajan</title>
-<meta name="description" content="Alwin Sajan: BCA student, C programming blog and LinkedIn posts.">
+<meta name="description" content="Alwin Sajan: BCA student, C programming blog, projects and LinkedIn posts.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232F45FF'/><text x='50' y='70' font-size='60' font-family='sans-serif' font-weight='800' text-anchor='middle' fill='%23FFD23F'>A</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,28 +18,45 @@
   <a class="logo" href="#top">Alwin Sajan</a>
   <ul>
     <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#blog">Blog</a></li>
     <li><a href="#linkedin">LinkedIn</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="tg" type="button" aria-label="Switch to dark mode"></button>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
-    <p class="hello">Hi, I’m</p>
-    <h1 aria-label="Alwin Sajan"><span><i>Alwin</i></span><span><i>Sajan.</i></span></h1>
-    <!-- EDIT: one sentence about what you do -->
-    <p class="tagline">BCA student who builds with code and writes about what he learns.</p>
-    <div class="cta">
-      <a class="btn solid" href="blog-arrays.html">Read my blog</a>
-      <a class="btn ghost" href="#contact">Get in touch</a>
-    </div>
-    <div class="cells" aria-hidden="true">
-      <div class="cell" style="--n:0"><b>85</b><span>[0]</span></div>
-      <div class="cell" style="--n:1"><b>72</b><span>[1]</span></div>
-      <div class="cell" style="--n:2"><b>90</b><span>[2]</span></div>
-      <div class="cell" style="--n:3"><b>67</b><span>[3]</span></div>
-      <div class="cell" style="--n:4"><b>88</b><span>[4]</span></div>
+    <div class="hero-grid">
+      <div>
+        <p class="hello">Hi, I’m</p>
+        <h1 aria-label="Alwin Sajan"><span><i>Alwin</i></span><span><i>Sajan.</i></span></h1>
+        <!-- EDIT: one sentence about what you do -->
+        <p class="tagline">BCA student who builds with code and writes about what he learns.</p>
+        <div class="cta">
+          <a class="btn solid" href="blog-arrays.html">Read my blog</a>
+          <a class="btn ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="play" id="play">
+        <div class="cells">
+          <button class="cell" style="--n:0" aria-label="marks index 0, value 85"><b>85</b><span>[0]</span></button>
+          <button class="cell" style="--n:1" aria-label="marks index 1, value 72"><b>72</b><span>[1]</span></button>
+          <button class="cell" style="--n:2" aria-label="marks index 2, value 90"><b>90</b><span>[2]</span></button>
+          <button class="cell" style="--n:3" aria-label="marks index 3, value 67"><b>67</b><span>[3]</span></button>
+          <button class="cell" style="--n:4" aria-label="marks index 4, value 88"><b>88</b><span>[4]</span></button>
+        </div>
+        <div class="tools">
+          <button class="btn ghost sm" id="run" type="button">▶ Run the loop</button>
+          <span class="out" id="out" aria-live="polite">Tap a number to see its index.</span>
+        </div>
+        <figure class="meme" id="meme" aria-live="polite">
+          <div class="mt" id="mt">Click a number</div>
+          <div class="em" id="em">👆</div>
+          <div class="mb" id="mb">I dare you</div>
+        </figure>
+      </div>
     </div>
   </div>
 </header>
@@ -52,7 +70,7 @@
       <div class="panel">
         <!-- EDIT: your story -->
         <p style="margin-top:0">I’m Alwin, a student who likes turning ideas into working software. I started with small programs and kept going, and now I enjoy building things I can share with other people.</p>
-        <p>I care about clear code, simple design and learning in public.</p>
+        <p>I care about clear code, simple design and learning in public. I write blog posts to explain what I learn in plain words, because explaining something is the best way to understand it.</p>
       </div>
       <div class="panel">
         <ul class="facts">
@@ -72,6 +90,71 @@
   </div>
 </section>
 
+<section style="padding-top:20px">
+  <div class="wrap">
+    <h2>What I’m learning</h2>
+    <p class="lead">My current semester and the topics I’m practising.</p>
+    <div class="learn">
+      <div class="panel"><h3>C programming</h3><p>Writing programs with arrays, functions, structures and file handling.</p><div class="chips"><span>Arrays</span><span>Functions</span><span>Structures</span><span>File handling</span></div></div>
+      <div class="panel"><h3>Discrete mathematics</h3><p>The maths behind computing: logic, proofs and counting problems.</p><div class="chips"><span>Logic</span><span>Quantifiers</span><span>Counting</span></div></div>
+      <div class="panel"><h3>Digital computer fundamentals</h3><p>How computers represent and process information.</p><div class="chips"><span>Number systems</span><span>Logic gates</span></div></div>
+      <div class="panel"><h3>Web basics</h3><p>HTML, CSS and JavaScript. This site is my practice project.</p><div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="padding-top:20px">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="lead">Things I’ve built while learning.</p>
+    <!-- EDIT: change the text or add links to your own projects -->
+    <ul class="proj">
+      <li>
+        <div><h3>Supermarket management system</h3><p>A C program that manages products, prices and stock using structures, arrays of structures and file handling.</p></div>
+        <div class="chips"><span>C</span><span>Structures</span><span>Files</span></div>
+      </li>
+      <li>
+        <div><h3>Student marks calculator</h3><p>Reads marks into an array and finds the total and average with a loop. <a href="blog-arrays.html">Read how it works</a></p></div>
+        <div class="chips"><span>C</span><span>Arrays</span><span>Loops</span></div>
+      </li>
+      <li>
+        <div><h3>This portfolio</h3><p>A responsive site with dark mode, an interactive array and a blog, built with plain HTML, CSS and JavaScript.</p></div>
+        <div class="chips"><span>HTML</span><span>CSS</span><span>JS</span></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+    <h2>C in 60 seconds</h2>
+    <p class="lead">Four ideas every C beginner meets first. Pick a tab.</p>
+    <div class="tabs" role="tablist">
+      <button role="tab" data-t="t1" aria-selected="true">Variables</button>
+      <button role="tab" data-t="t2" aria-selected="false">Loops</button>
+      <button role="tab" data-t="t3" aria-selected="false">Arrays</button>
+      <button role="tab" data-t="t4" aria-selected="false">Functions</button>
+    </div>
+    <div class="tp" id="t1"><p>A variable is a named box in memory. Its type decides what it can hold.</p>
+<figure class="code"><figcaption>variables.c</figcaption><pre><code class="lang-c">int marks = 85;
+float average = 80.4;
+char grade = 'A';
+printf("%d %.1f %c", marks, average, grade);</code></pre></figure></div>
+    <div class="tp" id="t2" hidden><p>A loop repeats code. A <code class="i">for</code> loop counts for you.</p>
+<figure class="code"><figcaption>loop.c</figcaption><pre><code class="lang-c">for (i = 1; i &lt;= 5; i++) {
+    printf("%d ", i);   // prints 1 2 3 4 5
+}</code></pre></figure></div>
+    <div class="tp" id="t3" hidden><p>An array stores many values of one type under a single name. Counting starts at 0.</p>
+<figure class="code"><figcaption>array.c</figcaption><pre><code class="lang-c">int marks[3] = {85, 72, 90};
+printf("%d", marks[2]);   // prints 90</code></pre></figure></div>
+    <div class="tp" id="t4" hidden><p>A function is a reusable block of code. It takes input and can return a result.</p>
+<figure class="code"><figcaption>function.c</figcaption><pre><code class="lang-c">int square(int n) {
+    return n * n;
+}
+printf("%d", square(4));   // prints 16</code></pre></figure></div>
+  </div>
+</section>
+
 <section id="blog" style="padding-top:20px">
   <div class="wrap">
     <h2>Blog</h2>
@@ -80,7 +163,7 @@
       <div class="copy">
         <span class="tag">C programming</span>
         <h3>How does an array work? How can one variable store many values?</h3>
-        <p>A beginner-friendly guide to arrays in C, with a student marks program, loops and real-world uses.</p>
+        <p>A beginner-friendly guide to arrays in C, with a student marks program, loops, common mistakes and a quick quiz.</p>
         <span class="go">Read the post</span>
       </div>
       <div class="art" aria-hidden="true">
@@ -90,6 +173,10 @@
         <div style="margin-top:14px;opacity:.7">marks[2] <em>→</em> 90</div>
       </div>
     </a>
+    <div class="soon">
+      <div><b>Coming soon: Loops in C</b>for, while and do-while, with simple examples.</div>
+      <div><b>Coming soon: Structures in C</b>Grouping different data types under one name.</div>
+    </div>
   </div>
 </section>
 
@@ -123,10 +210,10 @@
   <div class="wrap">
     <h2>Journey</h2>
     <div class="timeline">
-      <!-- EDIT: your milestones, newest first -->
-      <div class="event"><time>2026</time><h3>Launched this site</h3><p>19th October 2026</p></div>
-      <div class="event"><time>2025</time><h3>Started my degree</h3><p>BCA, Christ University</p></div>
+      <!-- EDIT: your milestones, oldest first -->
       <div class="event"><time>Earlier</time><h3>Started learning to code</h3><p>Add what got you into tech.</p></div>
+      <div class="event"><time>2025</time><h3>Started my degree</h3><p>BCA, Christ University</p></div>
+      <div class="event"><time>2026</time><h3>Published my first blog and this site</h3><p>19th October 2026</p></div>
     </div>
   </div>
 </section>
@@ -134,6 +221,7 @@
 <section class="contact" id="contact">
   <div class="wrap">
     <h2>Let’s build something together.</h2>
+    <p>Have a question, an internship or a project idea? Send me a message and I’ll get back to you.</p>
     <a class="mail" href="mailto:alwinsajanm@hotmail.com">alwinsajanm@hotmail.com</a>
     <div class="links">
       <a class="btn dark" href="https://www.linkedin.com/in/alwin-sajan" rel="noopener" target="_blank">Connect on LinkedIn</a>
@@ -142,7 +230,12 @@
 </section>
 </main>
 
-<footer><div class="wrap">© <span class="yr"></span> Alwin Sajan</div></footer>
+<footer>
+  <div class="wrap">
+    <div class="fl"><a href="#top">Back to top</a><a href="blog-arrays.html">Blog</a><a href="https://www.linkedin.com/in/alwin-sajan" rel="noopener" target="_blank">LinkedIn</a><a href="mailto:alwinsajanm@hotmail.com">Email</a></div>
+    © <span class="yr"></span> Alwin Sajan
+  </div>
+</footer>
 <script src="script.js"></script>
 </body>
 </html>
