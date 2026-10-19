@@ -32,31 +32,40 @@
       <div>
         <p class="hello">Hi, I’m</p>
         <h1 aria-label="Alwin Sajan"><span><i>Alwin</i></span><span><i>Sajan.</i></span></h1>
-        <!-- EDIT: one sentence about what you do -->
         <p class="tagline">BCA student who builds with code and writes about what he learns.</p>
         <div class="cta">
           <a class="btn solid" href="blog-arrays.html">Read my blog</a>
           <a class="btn ghost" href="#contact">Get in touch</a>
         </div>
       </div>
-      <div class="play" id="play">
-        <div class="cells">
-          <button class="cell" style="--n:0" aria-label="marks index 0, value 85"><b>85</b><span>[0]</span></button>
-          <button class="cell" style="--n:1" aria-label="marks index 1, value 72"><b>72</b><span>[1]</span></button>
-          <button class="cell" style="--n:2" aria-label="marks index 2, value 90"><b>90</b><span>[2]</span></button>
-          <button class="cell" style="--n:3" aria-label="marks index 3, value 67"><b>67</b><span>[3]</span></button>
-          <button class="cell" style="--n:4" aria-label="marks index 4, value 88"><b>88</b><span>[4]</span></button>
+
+      <!-- Modern Hero Image & Profile Card Section -->
+      <div class="hero-profile-wrapper">
+        <div class="profile-card">
+          <div class="avatar-frame">
+            <img src="image.jpg" alt="Alwin Sajan" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="avatar-fallback">AS</div>
+            <div class="img-gradient-overlay"></div>
+          </div>
+          <div class="glow-ring"></div>
+          
+          <div class="floating-chip chip-top">
+            <span class="chip-icon">🎓</span>
+            <div>
+              <b>Christ University</b>
+              <span>BCA Student</span>
+            </div>
+          </div>
+          <div class="floating-chip chip-bottom">
+            <span class="chip-icon">💻</span>
+            <div>
+              <b>C & Web Dev</b>
+              <span>Building projects</span>
+            </div>
+          </div>
         </div>
-        <div class="tools">
-          <button class="btn ghost sm" id="run" type="button">▶ Run the loop</button>
-          <span class="out" id="out" aria-live="polite">Tap a number to see its index.</span>
-        </div>
-        <figure class="meme" id="meme" aria-live="polite">
-          <div class="mt" id="mt">Click a number</div>
-          <div class="em" id="em">👆</div>
-          <div class="mb" id="mb">I dare you</div>
-        </figure>
       </div>
+      
     </div>
   </div>
 </header>
@@ -68,7 +77,6 @@
     <p class="lead">A bit about who I am and what I work with.</p>
     <div class="about">
       <div class="panel">
-        <!-- EDIT: your story -->
         <p style="margin-top:0">I’m Alwin, a student who likes turning ideas into working software. I started with small programs and kept going, and now I enjoy building things I can share with other people.</p>
         <p>I care about clear code, simple design and learning in public. I write blog posts to explain what I learn in plain words, because explaining something is the best way to understand it.</p>
       </div>
@@ -81,7 +89,6 @@
         </ul>
       </div>
       <div class="panel skills">
-        <!-- EDIT: replace with your real skills -->
         <div><h3>Languages</h3><div class="chips"><span>C</span><span>Python</span><span>JavaScript</span><span>HTML</span><span>CSS</span></div></div>
         <div><h3>Tools</h3><div class="chips"><span>Git</span><span>VS Code</span><span>Linux terminal</span></div></div>
         <div><h3>Strong areas</h3><div class="chips"><span>Data structures</span><span>Discrete maths</span><span>Small apps</span></div></div>
@@ -107,7 +114,6 @@
   <div class="wrap">
     <h2>Projects</h2>
     <p class="lead">Things I’ve built while learning.</p>
-    <!-- EDIT: change the text or add links to your own projects -->
     <ul class="proj">
       <li>
         <div><h3>Supermarket management system</h3><p>A C program that manages products, prices and stock using structures, arrays of structures and file handling.</p></div>
@@ -118,7 +124,7 @@
         <div class="chips"><span>C</span><span>Arrays</span><span>Loops</span></div>
       </li>
       <li>
-        <div><h3>This portfolio</h3><p>A responsive site with dark mode, an interactive array and a blog, built with plain HTML, CSS and JavaScript.</p></div>
+        <div><h3>This portfolio</h3><p>A responsive site with dark mode, interactive code tools and a blog, built with plain HTML, CSS and JavaScript.</p></div>
         <div class="chips"><span>HTML</span><span>CSS</span><span>JS</span></div>
       </li>
     </ul>
@@ -163,8 +169,8 @@ printf("%d", square(4));   // prints 16</code></pre></figure></div>
       <div class="copy">
         <span class="tag">C programming</span>
         <h3>How does an array work? How can one variable store many values?</h3>
-        <p>A beginner-friendly guide to arrays in C, with a student marks program, loops, common mistakes and a quick quiz.</p>
-        <span class="go">Read the post</span>
+        <p>A beginner-friendly guide to arrays in C, with interactive memory visualizers, student marks program, loops, common mistakes and a quick quiz.</p>
+        <span class="go">Read the post & try interactive tool</span>
       </div>
       <div class="art" aria-hidden="true">
         <div><em>int</em> marks[5] = {</div>
@@ -185,12 +191,11 @@ printf("%d", square(4));   // prints 16</code></pre></figure></div>
     <h2>LinkedIn posts</h2>
     <p class="lead">Short updates and ideas I share on LinkedIn.</p>
     <div class="posts">
-      <!-- EDIT: paste the link of a real post into href. Copy this <a> block to add more posts. -->
       <a class="post" href="https://www.linkedin.com/in/alwin-sajan" rel="noopener" target="_blank">
         <div>
           <span class="in">in</span>
           <h3>My first blog is live: how arrays work in C</h3>
-          <p>I wrote a beginner guide on storing many values in one variable. Have a look and tell me what you think.</p>
+          <p>I wrote a beginner guide on storing many values in one variable with interactive tools. Have a look and tell me what you think.</p>
         </div>
         <small>View on LinkedIn</small>
       </a>
@@ -210,10 +215,9 @@ printf("%d", square(4));   // prints 16</code></pre></figure></div>
   <div class="wrap">
     <h2>Journey</h2>
     <div class="timeline">
-      <!-- EDIT: your milestones, oldest first -->
-      <div class="event"><time>Earlier</time><h3>Started learning to code</h3><p>Add what got you into tech.</p></div>
+      <div class="event"><time>Earlier</time><h3>Started learning to code</h3><p>Explored basic logic and started with C.</p></div>
       <div class="event"><time>2025</time><h3>Started my degree</h3><p>BCA, Christ University</p></div>
-      <div class="event"><time>2026</time><h3>Published my first blog and this site</h3><p>19th October 2026</p></div>
+      <div class="event"><time>2026</time><h3>Published my blog & portfolio site</h3><p>19th October 2026</p></div>
     </div>
   </div>
 </section>
