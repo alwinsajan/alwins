@@ -46,46 +46,26 @@
 <p>An array is a data structure that stores a fixed-size sequential collection of elements of the same type in contiguous RAM memory.</p>
 <figure class="code"><figcaption>array.c</figcaption><pre><code class="lang-c">int marks[5] = {85, 72, 90, 67, 88};</code></pre></figure>
 
-<!-- Interactive Array Workbench Moved Here -->
-<div class="interactive-workbench" id="play">
+<!-- Interactive Array Workbench -->
+<div class="play" id="play" style="background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:32px;margin:32px 0;box-shadow:0 12px 36px rgba(10,12,40,.06)">
   <div class="workbench-header">
-    <h3>⚡ Interactive Array Visualizer</h3>
-    <p>Tap elements to inspect values, test loop iterations, or find peak values live.</p>
+    <h3 style="font-family:var(--display);font-size:1.4rem;margin-bottom:4px">⚡ Interactive Array Workbench</h3>
+    <p style="color:var(--muted);font-size:.95rem;margin-bottom:20px">Tap elements below to inspect RAM addresses, run a loop, or find max values live.</p>
   </div>
   
-  <div class="cells" id="array-cells">
-    <button class="cell" style="--n:0" aria-label="index 0, value 85">
-      <b>85</b>
-      <span>[0]</span>
-      <small class="mem-addr">0x2000</small>
-    </button>
-    <button class="cell" style="--n:1" aria-label="index 1, value 72">
-      <b>72</b>
-      <span>[1]</span>
-      <small class="mem-addr">0x2004</small>
-    </button>
-    <button class="cell" style="--n:2" aria-label="index 2, value 90">
-      <b>90</b>
-      <span>[2]</span>
-      <small class="mem-addr">0x2008</small>
-    </button>
-    <button class="cell" style="--n:3" aria-label="index 3, value 67">
-      <b>67</b>
-      <span>[3]</span>
-      <small class="mem-addr">0x200C</small>
-    </button>
-    <button class="cell" style="--n:4" aria-label="index 4, value 88">
-      <b>88</b>
-      <span>[4]</span>
-      <small class="mem-addr">0x2010</small>
-    </button>
+  <div class="cells">
+    <button class="cell" style="--n:0" aria-label="marks index 0, value 85"><b>85</b><span>[0]</span><small class="mem-addr" style="display:block;font-family:var(--mono);font-size:.72rem;color:var(--accent);margin-top:2px;font-weight:700">0x2000</small></button>
+    <button class="cell" style="--n:1" aria-label="marks index 1, value 72"><b>72</b><span>[1]</span><small class="mem-addr" style="display:block;font-family:var(--mono);font-size:.72rem;color:var(--accent);margin-top:2px;font-weight:700">0x2004</small></button>
+    <button class="cell" style="--n:2" aria-label="marks index 2, value 90"><b>90</b><span>[2]</span><small class="mem-addr" style="display:block;font-family:var(--mono);font-size:.72rem;color:var(--accent);margin-top:2px;font-weight:700">0x2008</small></button>
+    <button class="cell" style="--n:3" aria-label="marks index 3, value 67"><b>67</b><span>[3]</span><small class="mem-addr" style="display:block;font-family:var(--mono);font-size:.72rem;color:var(--accent);margin-top:2px;font-weight:700">0x200C</small></button>
+    <button class="cell" style="--n:4" aria-label="marks index 4, value 88"><b>88</b><span>[4]</span><small class="mem-addr" style="display:block;font-family:var(--mono);font-size:.72rem;color:var(--accent);margin-top:2px;font-weight:700">0x2010</small></button>
   </div>
 
-  <div class="tools">
-    <button class="btn ghost sm" id="run" type="button">▶ Run For-Loop</button>
-    <button class="btn ghost sm" id="find-max" type="button">🔍 Find Highest Mark</button>
-    <button class="btn ghost sm" id="edit-val" type="button">✏️ Update Random Cell</button>
-    <span class="out" id="out" aria-live="polite">Tap a number cell to explore its properties.</span>
+  <div class="tools" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:20px">
+    <button class="btn ghost sm" id="run" type="button" style="color:var(--ink);border-color:var(--line)">▶ Run For-Loop</button>
+    <button class="btn ghost sm" id="find-max" type="button" style="color:var(--ink);border-color:var(--line)">🔍 Find Highest Mark</button>
+    <button class="btn ghost sm" id="edit-val" type="button" style="color:var(--ink);border-color:var(--line)">✏️ Update Random Cell</button>
+    <span class="out" id="out" aria-live="polite" style="font-family:var(--mono);font-size:.9rem;color:var(--cobalt);font-weight:700;display:block;width:100%;margin-top:8px">Tap a number cell to explore its properties.</span>
   </div>
 
   <figure class="meme" id="meme" aria-live="polite">
@@ -96,7 +76,7 @@
 </div>
 
 <h2>How Arrays Live in Memory (Contiguous Storage)</h2>
-<p>Unlike loose variables scattered randomly in memory, array elements live directly next to each other. In 32-bit/64-bit systems, each integer <code class="i">int</code> typically takes <b>4 bytes</b>.</p>
+<p>Unlike loose variables scattered randomly in memory, array elements live directly next to each other. In standard systems, each integer <code class="i">int</code> takes <b>4 bytes</b>.</p>
 
 <div class="note">
   <b>Formula for Memory Address:</b><br>
@@ -113,7 +93,7 @@
 <p>Without arrays, we might write messy repetitive code:</p>
 <figure class="code"><figcaption>without-array.c</figcaption><pre><code class="lang-c">int mark1, mark2, mark3, mark4, mark5; // hard to maintain!</code></pre></figure>
 
-<p>With an array, everything is consolidated:</p>
+<p>With an array, everything is consolidated under a single name:</p>
 <figure class="code"><figcaption>with-array.c</figcaption><pre><code class="lang-c">int marks[5];</code></pre></figure>
 
 <h2>Arrays and loops</h2>
