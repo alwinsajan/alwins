@@ -36,7 +36,7 @@ nav ul a.on{background:var(--sun);color:#161936}
   background:radial-gradient(55% 55% at 88% 92%,var(--h3) 0,transparent 70%),radial-gradient(45% 45% at 5% 0,var(--h2) 0,transparent 70%),var(--h1)}
 .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(70% 70% at 30% 40%,#000,transparent);-webkit-mask-image:radial-gradient(70% 70% at 30% 40%,#000,transparent)}
 .hero .wrap{width:100%;max-width:1100px;margin:0 auto;padding:0 24px}
-.hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;text-align:left}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1.1fr;gap:48px;align-items:center;text-align:left}
 .hello{display:inline-flex;align-items:center;gap:10px;font-weight:500;padding:7px 16px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);margin-bottom:22px}
 .hello::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(185,240,211,.3)}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(3.2rem,8.5vw,7.5rem);line-height:.92;letter-spacing:-.045em;text-align:left}
@@ -65,21 +65,22 @@ h1 span+span i{animation-delay:.12s;color:var(--sun)}
 .profile-card {
   position: relative;
   width: 100%;
-  max-width: 360px; /* Increased from 300px to make photo bigger */
+  max-width: 490px; /* Increased to make photo much more prominent */
   aspect-ratio: 3 / 4;
-  border-radius: 36px;
+  border-radius: 38px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   padding: 14px;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .profile-card:hover {
   transform: translateY(-8px) scale(1.01);
 }
+
 
 /* Photo Container */
 .avatar-frame {
