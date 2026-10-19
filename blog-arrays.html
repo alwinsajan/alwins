@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){}})();</script>
 <title>How Does an Array Work in C? | Alwin Sajan</title>
-<meta name="description" content="A beginner-friendly guide to arrays in C: how one variable can store many values.">
+<meta name="description" content="A beginner-friendly guide to arrays in C with an interactive array simulator and memory address explorer.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232F45FF'/><text x='50' y='70' font-size='60' font-family='sans-serif' font-weight='800' text-anchor='middle' fill='%23FFD23F'>A</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,8 +31,8 @@
   <div class="wrap">
     <a class="back" href="index.html#blog">← Back to home</a>
     <h1>How does an array work? How can one variable store many values?</h1>
-    <p>A beginner’s guide to arrays in C.</p>
-    <div class="meta"><span>C programming</span><span>19 October 2026</span><span>4 min read</span></div>
+    <p>A beginner’s guide to arrays in C with interactive memory visualizers.</p>
+    <div class="meta"><span>C programming</span><span>19 October 2026</span><span>5 min read</span></div>
   </div>
 </header>
 
@@ -40,42 +40,89 @@
 
 <h2 style="margin-top:0">Introduction</h2>
 <p>In every programming language, we often need to store values of the same type. For example, a program might need to keep track of the marks of many students. If we create a variable for each mark, the code becomes long and hard to handle.</p>
-<p>In the C programming language, an array gives us a way to solve this problem. It lets us store many values using just one variable name.</p>
+<p>In C, an array gives us a clean way to solve this by storing multiple values using just one variable name.</p>
 
 <h2>What is an array?</h2>
-<p>An array is a programming tool that stores a group of values of the same type in an orderly arrangement, one after another in memory.</p>
+<p>An array is a data structure that stores a fixed-size sequential collection of elements of the same type in contiguous RAM memory.</p>
 <figure class="code"><figcaption>array.c</figcaption><pre><code class="lang-c">int marks[5] = {85, 72, 90, 67, 88};</code></pre></figure>
-<p>Here <code class="i">marks</code> is the name of the array, and <code class="i">5</code> means it can hold five values.</p>
 
-<div class="cells light" aria-label="Array with five values and their indexes">
-  <div class="cell"><b>85</b><span>[0]</span></div>
-  <div class="cell"><b>72</b><span>[1]</span></div>
-  <div class="cell"><b>90</b><span>[2]</span></div>
-  <div class="cell"><b>67</b><span>[3]</span></div>
-  <div class="cell"><b>88</b><span>[4]</span></div>
+<!-- Interactive Array Workbench Moved Here -->
+<div class="interactive-workbench" id="play">
+  <div class="workbench-header">
+    <h3>⚡ Interactive Array Visualizer</h3>
+    <p>Tap elements to inspect values, test loop iterations, or find peak values live.</p>
+  </div>
+  
+  <div class="cells" id="array-cells">
+    <button class="cell" style="--n:0" aria-label="index 0, value 85">
+      <b>85</b>
+      <span>[0]</span>
+      <small class="mem-addr">0x2000</small>
+    </button>
+    <button class="cell" style="--n:1" aria-label="index 1, value 72">
+      <b>72</b>
+      <span>[1]</span>
+      <small class="mem-addr">0x2004</small>
+    </button>
+    <button class="cell" style="--n:2" aria-label="index 2, value 90">
+      <b>90</b>
+      <span>[2]</span>
+      <small class="mem-addr">0x2008</small>
+    </button>
+    <button class="cell" style="--n:3" aria-label="index 3, value 67">
+      <b>67</b>
+      <span>[3]</span>
+      <small class="mem-addr">0x200C</small>
+    </button>
+    <button class="cell" style="--n:4" aria-label="index 4, value 88">
+      <b>88</b>
+      <span>[4]</span>
+      <small class="mem-addr">0x2010</small>
+    </button>
+  </div>
+
+  <div class="tools">
+    <button class="btn ghost sm" id="run" type="button">▶ Run For-Loop</button>
+    <button class="btn ghost sm" id="find-max" type="button">🔍 Find Highest Mark</button>
+    <button class="btn ghost sm" id="edit-val" type="button">✏️ Update Random Cell</button>
+    <span class="out" id="out" aria-live="polite">Tap a number cell to explore its properties.</span>
+  </div>
+
+  <figure class="meme" id="meme" aria-live="polite">
+    <div class="mt" id="mt">Click a cell</div>
+    <div class="em" id="em">👆</div>
+    <div class="mb" id="mb">Explore index & RAM placement</div>
+  </figure>
 </div>
 
-<div class="note">In an array we start counting from index <b>0</b>. So <code class="i">marks[0]</code> is 85 and <code class="i">marks[2]</code> is 90.</div>
+<h2>How Arrays Live in Memory (Contiguous Storage)</h2>
+<p>Unlike loose variables scattered randomly in memory, array elements live directly next to each other. In 32-bit/64-bit systems, each integer <code class="i">int</code> typically takes <b>4 bytes</b>.</p>
+
+<div class="note">
+  <b>Formula for Memory Address:</b><br>
+  <code>Address of marks[i] = Base Address + (i * sizeof(int))</code><br><br>
+  If base address is <code>0x2000</code>:
+  <ul class="dots" style="margin-top:10px">
+    <li><code>marks[0]</code> → 0x2000</li>
+    <li><code>marks[1]</code> → 0x2004 (+4 bytes)</li>
+    <li><code>marks[2]</code> → 0x2008 (+4 bytes)</li>
+  </ul>
+</div>
 
 <h2>Why use arrays?</h2>
-<p>Without arrays, we might write code like this:</p>
-<figure class="code"><figcaption>without-array.c</figcaption><pre><code class="lang-c">int mark1, mark2, mark3, mark4, mark5; // and this could go on forever</code></pre></figure>
-<p>With an array, we only need to write:</p>
+<p>Without arrays, we might write messy repetitive code:</p>
+<figure class="code"><figcaption>without-array.c</figcaption><pre><code class="lang-c">int mark1, mark2, mark3, mark4, mark5; // hard to maintain!</code></pre></figure>
+
+<p>With an array, everything is consolidated:</p>
 <figure class="code"><figcaption>with-array.c</figcaption><pre><code class="lang-c">int marks[5];</code></pre></figure>
-<p>Using arrays makes our programs easier to organize. It also helps us process all the values together, especially when we use loops.</p>
 
 <h2>Arrays and loops</h2>
-<p>Loops work very well with arrays.</p>
-<figure class="code"><figcaption>loop.c</figcaption><pre><code class="lang-c">for (i = 0; i &lt; 5; i++)
-{
-    printf("%d ", marks[i]);
+<p>Loops and arrays work seamlessly together:</p>
+<figure class="code"><figcaption>loop.c</figcaption><pre><code class="lang-c">for (i = 0; i &lt; 5; i++) {
+    printf("marks[%d] = %d\n", i, marks[i]);
 }</code></pre></figure>
-<p>This loop goes through each element of the array, from index 0 to 4. Output:</p>
-<figure class="code out"><figcaption>output</figcaption><pre>85 72 90 67 88</pre></figure>
-<p>This is very helpful when we have a large number of values.</p>
 
-<h2>Practical example: student marks</h2>
-<p>One everyday use of arrays is storing a student’s marks.</p>
+<h2>Practical example: student marks calculator</h2>
 <figure class="code"><figcaption>marks.c</figcaption><pre><code class="lang-c">#include &lt;stdio.h&gt;
 
 int main() {
@@ -85,7 +132,7 @@ int main() {
     printf("Enter marks of 5 subjects:\n");
     for (i = 0; i &lt; 5; i++) {
         scanf("%d", &amp;marks[i]);
-        total = total + marks[i];
+        total += marks[i];
     }
 
     average = total / 5.0;
@@ -93,73 +140,25 @@ int main() {
     printf("Average = %.2f\n", average);
     return 0;
 }</code></pre></figure>
-<p>Sample output:</p>
-<figure class="code out"><figcaption>output</figcaption><pre>Enter marks of 5 subjects:
-85
-72
-90
-67
-88
-Total = 402
-Average = 80.40</pre></figure>
-<p>Here the five marks are stored in one array named <code class="i">marks</code>. The <code class="i">for</code> loop reads each mark, adds them up, and then we find the average.</p>
 
-<h2>Where are arrays used?</h2>
-<p>Arrays have many real-world uses, such as:</p>
-<ul>
-  <li>🎓 <b>Student systems:</b> storing marks</li>
-  <li>🏨 <b>Hotel systems:</b> storing room prices</li>
-  <li>🎮 <b>Games:</b> storing player scores</li>
-  <li>⚡ <b>Electricity systems:</b> storing monthly readings</li>
-  <li>🏥 <b>Hospital systems:</b> storing patient information</li>
-</ul>
-<p>For instance, hotel room prices can be saved like this:</p>
-<figure class="code"><figcaption>hotel.c</figcaption><pre><code class="lang-c">int roomPrice[5] = {2000, 2500, 3000, 4000, 5000};</code></pre></figure>
-
-<h2>Common mistakes</h2>
-<p>These four mistakes catch almost every beginner at least once.</p>
+<h2>Common mistakes to avoid</h2>
 <ul class="dots">
-  <li><b>Counting from 1.</b> The first element is <code class="i">marks[0]</code>, not <code class="i">marks[1]</code>.</li>
-  <li><b>Going out of bounds.</b> An array of size 5 has no <code class="i">marks[5]</code>. The last index is 4.</li>
-  <li><b>Forgetting the &amp; in scanf.</b> Write <code class="i">scanf("%d", &amp;marks[i])</code> to store the value.</li>
-  <li><b>Using values before setting them.</b> A new array without values holds random leftovers.</li>
+  <li><b>Counting from 1:</b> The first item is always <code class="i">marks[0]</code>.</li>
+  <li><b>Array Index Out of Bounds:</b> Declaring <code class="i">marks[5]</code> gives valid indices <code class="i">0</code> through <code class="i">4</code>. Accessing <code class="i">marks[5]</code> results in undefined behavior!</li>
+  <li><b>Forgetting &amp; in scanf:</b> Always pass memory address: <code class="i">scanf("%d", &amp;marks[i]);</code></li>
 </ul>
-<figure class="code"><figcaption>out-of-bounds.c</figcaption><pre><code class="lang-c">int marks[5] = {85, 72, 90, 67, 88};
-printf("%d", marks[5]);   // wrong: valid indexes are 0 to 4</code></pre></figure>
-
-<h2>Advantages of arrays</h2>
-<ul class="dots">
-  <li>We can store many values using just one variable name.</li>
-  <li>It reduces the amount of code.</li>
-  <li>It works smoothly with loops.</li>
-  <li>It helps in doing calculations, searching and sorting.</li>
-</ul>
-<div class="note"><b>One downside:</b> an array usually holds values of the same data type, and its size cannot change after it is declared.</div>
-
-<h2>Conclusion</h2>
-<p>Arrays are one of the most important ideas in C programming because they give us a simple way to store and manage many related values. Instead of making many variables, we can use a single array and reach each value by its index.</p>
-<p>When arrays are used with loops, they become even more powerful for handling large sets of data. From student marks to hotel prices and game scores, arrays are a basic idea with lots of practical uses.</p>
 
 <h2>Test yourself</h2>
-<div class="quiz" data-a="1" data-yes="Correct! Index 3 is the fourth value, which is 67." data-no="Not quite. Counting starts at 0, so index 3 is the fourth value.">
+<div class="quiz" data-a="1" data-yes="Correct! Index 3 is the 4th item, which is 67." data-no="Not quite. Counting starts at 0, so index 3 is the fourth value.">
   <p><b>Quick check:</b> with <code class="i">int marks[5] = {85, 72, 90, 67, 88};</code> what is <code class="i">marks[3]</code>?</p>
   <div class="opts"><button type="button">90</button><button type="button">67</button><button type="button">88</button></div>
   <p class="res" role="status"></p>
 </div>
-<div class="quiz" data-a="2" data-yes="Correct! The array has 5 values, so the valid indexes are 0 to 4." data-no="Not quite. Five values means indexes 0, 1, 2, 3 and 4.">
+
+<div class="quiz" data-a="2" data-yes="Correct! For size N, valid indices are 0 to N-1 (0 to 4)." data-no="Not quite. Five elements mean indices 0, 1, 2, 3, and 4.">
   <p><b>Another one:</b> what is the last valid index of <code class="i">int marks[5]</code>?</p>
   <div class="opts"><button type="button">5</button><button type="button">6</button><button type="button">4</button></div>
   <p class="res" role="status"></p>
-</div>
-
-<div class="note">
-  <b>Key takeaways</b>
-  <ul class="dots">
-    <li>One array name can hold many values of the same type.</li>
-    <li>Indexes start at 0 and end at size minus 1.</li>
-    <li>Loops and arrays work best together.</li>
-    <li>The size is fixed when you declare the array.</li>
-  </ul>
 </div>
 
 <div class="end">
