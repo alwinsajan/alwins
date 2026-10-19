@@ -4,178 +4,129 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alwin Sajan</title>
-<meta name="description" content="Portfolio of Alwin Sajan: projects, skills and ways to get in touch.">
+<meta name="description" content="Alwin Sajan: BCA student, C programming blog and LinkedIn posts.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232F45FF'/><text x='50' y='70' font-size='60' font-family='sans-serif' font-weight='800' text-anchor='middle' fill='%23FFD23F'>A</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --cobalt:#2F45FF; --deep:#1A2BC4; --chalk:#F5F6FB; --ink:#171A33; --muted:#5B607A;
-  --sun:#FFD23F; --mint:#B9F0D3; --line:#D9DCEB;
-  --display:"Bricolage Grotesque","Trebuchet MS",sans-serif;
-  --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--chalk);color:var(--ink);line-height:1.65;font-size:1.0625rem}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-
-/* Hero */
-.hero{background:var(--cobalt);color:#fff;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;right:-12vw;bottom:-18vw;width:48vw;height:48vw;max-width:640px;max-height:640px;border-radius:50%;background:var(--deep)}
-.hero::before{content:"";position:absolute;right:9vw;bottom:14vh;width:90px;height:90px;border-radius:50%;background:var(--sun);z-index:1}
-nav{display:flex;justify-content:space-between;align-items:center;padding:28px 0;position:relative;z-index:2}
-nav .logo{font-family:var(--display);font-weight:800;font-size:1.25rem;text-decoration:none}
-nav ul{display:flex;gap:28px;list-style:none}
-nav a{text-decoration:none;font-weight:500;opacity:.9}
-nav ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
-.hero-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 0 90px;position:relative;z-index:2}
-.hello{font-size:1.2rem;font-weight:500;margin-bottom:12px;color:var(--mint)}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(3.6rem,13.5vw,10.5rem);line-height:.92;letter-spacing:-.04em}
-h1 span{display:block;overflow:hidden;padding-bottom:.06em}
-h1 span i{display:block;font-style:normal;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
-h1 span:nth-child(2) i{animation-delay:.14s;color:var(--sun)}
-@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
-.tagline{max-width:34ch;margin-top:32px;font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.45}
-.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
-.btn{display:inline-block;padding:14px 26px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid #fff;transition:background .2s,color .2s,transform .2s}
-.btn.solid{background:#fff;color:var(--cobalt)}
-.btn.solid:hover{background:var(--sun);border-color:var(--sun);color:var(--ink)}
-.btn.ghost:hover{background:#fff;color:var(--cobalt)}
-
-/* Sections */
-section{padding:96px 0}
-h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.03em;line-height:1.05;margin-bottom:40px}
-.about{display:grid;grid-template-columns:1fr 1.5fr;gap:56px}
-.about p{margin-bottom:18px;max-width:62ch}
-.about p:last-child{margin-bottom:0}
-.facts{list-style:none;border-top:2px solid var(--ink)}
-.facts li{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}
-.facts b{font-weight:700}
-.facts span{color:var(--muted);text-align:right}
-
-.skills{background:#fff;border-block:1px solid var(--line)}
-.skill-row{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--line);align-items:baseline}
-.skill-row:last-child{border-bottom:1px solid var(--line)}
-.skill-row h3{font-family:var(--display);font-size:1.2rem}
-.skill-row p{font-size:1.15rem}
-.skill-row em{font-style:normal;font-weight:500}
-
-.proj{list-style:none;border-top:2px solid var(--ink)}
-.proj a{display:grid;grid-template-columns:1fr auto;gap:8px 32px;padding:26px 14px;border-bottom:1px solid var(--line);text-decoration:none;transition:background .2s,padding .25s}
-.proj a:hover,.proj a:focus-visible{background:var(--sun);padding-left:28px}
-.proj h3{font-family:var(--display);font-size:1.6rem;letter-spacing:-.02em}
-.proj p{color:var(--muted);max-width:60ch}
-.proj a:hover p{color:var(--ink)}
-.proj .meta{grid-row:1/3;grid-column:2;align-self:center;text-align:right;font-weight:500;font-size:.95rem}
-.note{margin-top:20px;color:var(--muted);font-size:.95rem}
-
-.timeline{border-left:3px solid var(--cobalt);margin-left:6px}
-.event{position:relative;padding:0 0 38px 32px}
-.event:last-child{padding-bottom:0}
-.event::before{content:"";position:absolute;left:-11px;top:6px;width:19px;height:19px;border-radius:50%;background:var(--chalk);border:4px solid var(--cobalt)}
-.event time{font-weight:700;color:var(--cobalt)}
-.event h3{font-family:var(--display);font-size:1.35rem;margin:2px 0 4px}
-.event p{color:var(--muted);max-width:60ch}
-
-.contact{background:var(--sun);padding:110px 0}
-.contact h2{font-size:clamp(2.4rem,8vw,6rem);line-height:.98;margin-bottom:28px}
-.contact .mail{display:inline-block;font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,3.6vw,2.2rem);border-bottom:4px solid var(--ink);text-decoration:none;word-break:break-all}
-.contact .mail:hover{background:var(--ink);color:var(--sun)}
-.links{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:36px;font-weight:700}
-footer{padding:28px 0;color:var(--muted);font-size:.92rem;text-align:center}
-
-@media(max-width:760px){
-  nav ul{gap:16px;font-size:.95rem}
-  .about{grid-template-columns:1fr;gap:36px}
-  .skill-row{grid-template-columns:1fr;gap:4px}
-  .proj a{grid-template-columns:1fr}
-  .proj .meta{grid-row:auto;grid-column:auto;text-align:left}
-  section{padding:68px 0}
-  .hero::before{width:60px;height:60px}
-}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  h1 span i{animation:none}
-  *{transition:none!important}
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="hero">
-  <div class="wrap" style="display:flex;flex-direction:column;flex:1">
-    <nav aria-label="Main">
-      <a class="logo" href="#top">alwinsajan</a>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="hero-body" id="top">
-      <p class="hello">Hi, I’m</p>
-      <h1 aria-label="Alwin Sajan"><span><i>Alwin</i></span><span><i>Sajan.</i></span></h1>
-      <!-- EDIT: one sentence about what you do -->
-      <p class="tagline">I build useful things with code and I’m always learning the next one.</p>
-      <div class="cta">
-        <a class="btn solid" href="#work">See my projects</a>
-        <a class="btn ghost" href="#contact">Get in touch</a>
-      </div>
+<nav aria-label="Main">
+  <a class="logo" href="#top">Alwin Sajan</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#linkedin">LinkedIn</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="hello">Hi, I’m</p>
+    <h1 aria-label="Alwin Sajan"><span><i>Alwin</i></span><span><i>Sajan.</i></span></h1>
+    <!-- EDIT: one sentence about what you do -->
+    <p class="tagline">BCA student who builds with code and writes about what he learns.</p>
+    <div class="cta">
+      <a class="btn solid" href="blog-arrays.html">Read my blog</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+    <div class="cells" aria-hidden="true">
+      <div class="cell" style="--n:0"><b>85</b><span>[0]</span></div>
+      <div class="cell" style="--n:1"><b>72</b><span>[1]</span></div>
+      <div class="cell" style="--n:2"><b>90</b><span>[2]</span></div>
+      <div class="cell" style="--n:3"><b>67</b><span>[3]</span></div>
+      <div class="cell" style="--n:4"><b>88</b><span>[4]</span></div>
     </div>
   </div>
 </header>
 
 <main>
 <section id="about">
-  <div class="wrap about">
-    <div>
-      <h2>About me</h2>
-      <ul class="facts">
-        <!-- EDIT: facts -->
-        <li><b>Based in</b><span>Bengaluru, India</span></li>
-        <li><b>Studying</b><span>BCA, Christ University</span></li>
-        <li><b>Interested in</b><span>Web, software, problem solving</span></li>
-        <li><b>Open to</b><span>Internships and collaborations</span></li>
-      </ul>
-    </div>
-    <div>
-      <!-- EDIT: your story, 2 short paragraphs -->
-      <p>I’m Alwin, a student who likes turning ideas into working software. I started with small programs and kept going, and now I enjoy building things I can share with other people.</p>
-      <p>I care about clear code, simple design and learning in public.</p>
-    </div>
-  </div>
-</section>
-
-<section class="skills" aria-labelledby="skills-h">
   <div class="wrap">
-    <h2 id="skills-h">What I work with</h2>
-    <!-- EDIT: replace with your real skills -->
-    <div class="skill-row"><h3>Languages</h3><p><em>C</em>, <em>Python</em>, <em>JavaScript</em>, HTML, CSS</p></div>
-    <div class="skill-row"><h3>Tools</h3><p><em>Git</em>, <em>GitHub</em>, VS Code, Linux terminal</p></div>
-    <div class="skill-row"><h3>Strong areas</h3><p>Data structures, discrete maths, building small apps</p></div>
+    <h2>About me</h2>
+    <p class="lead">A bit about who I am and what I work with.</p>
+    <div class="about">
+      <div class="panel">
+        <!-- EDIT: your story -->
+        <p style="margin-top:0">I’m Alwin, a student who likes turning ideas into working software. I started with small programs and kept going, and now I enjoy building things I can share with other people.</p>
+        <p>I care about clear code, simple design and learning in public.</p>
+      </div>
+      <div class="panel">
+        <ul class="facts">
+          <li><b>Based in</b><span>Bengaluru, India</span></li>
+          <li><b>Studying</b><span>BCA, Christ University</span></li>
+          <li><b>Interested in</b><span>Web, software, problem solving</span></li>
+          <li><b>Open to</b><span>Internships and collaboration</span></li>
+        </ul>
+      </div>
+      <div class="panel skills">
+        <!-- EDIT: replace with your real skills -->
+        <div><h3>Languages</h3><div class="chips"><span>C</span><span>Python</span><span>JavaScript</span><span>HTML</span><span>CSS</span></div></div>
+        <div><h3>Tools</h3><div class="chips"><span>Git</span><span>VS Code</span><span>Linux terminal</span></div></div>
+        <div><h3>Strong areas</h3><div class="chips"><span>Data structures</span><span>Discrete maths</span><span>Small apps</span></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="work">
+<section id="blog" style="padding-top:20px">
   <div class="wrap">
-    <h2>Projects</h2>
-    <ul class="proj" id="projects"></ul>
-    <p class="note" id="proj-note">Loading your latest repositories from GitHub…</p>
+    <h2>Blog</h2>
+    <p class="lead">Things I learn, explained in plain words.</p>
+    <a class="feature" href="blog-arrays.html">
+      <div class="copy">
+        <span class="tag">C programming</span>
+        <h3>How does an array work? How can one variable store many values?</h3>
+        <p>A beginner-friendly guide to arrays in C, with a student marks program, loops and real-world uses.</p>
+        <span class="go">Read the post</span>
+      </div>
+      <div class="art" aria-hidden="true">
+        <div><em>int</em> marks[5] = {</div>
+        <div>&nbsp;&nbsp;85, 72, 90, 67, 88</div>
+        <div>};</div>
+        <div style="margin-top:14px;opacity:.7">marks[2] <em>→</em> 90</div>
+      </div>
+    </a>
   </div>
 </section>
 
-<section style="padding-top:0">
+<section id="linkedin" style="padding-top:20px">
+  <div class="wrap">
+    <h2>LinkedIn posts</h2>
+    <p class="lead">Short updates and ideas I share on LinkedIn.</p>
+    <div class="posts">
+      <!-- EDIT: paste the link of a real post into href. Copy this <a> block to add more posts. -->
+      <a class="post" href="https://www.linkedin.com/in/alwin-sajan" rel="noopener" target="_blank">
+        <div>
+          <span class="in">in</span>
+          <h3>My first blog is live: how arrays work in C</h3>
+          <p>I wrote a beginner guide on storing many values in one variable. Have a look and tell me what you think.</p>
+        </div>
+        <small>View on LinkedIn</small>
+      </a>
+      <a class="post blue" href="https://www.linkedin.com/in/alwin-sajan" rel="noopener" target="_blank">
+        <div>
+          <span class="in">in</span>
+          <h3>See all my posts</h3>
+          <p>Follow me on LinkedIn for new posts and updates.</p>
+        </div>
+        <small>Open my profile</small>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:20px">
   <div class="wrap">
     <h2>Journey</h2>
     <div class="timeline">
       <!-- EDIT: your milestones, newest first -->
-      <div class="event"><time>2026</time><h3>Building this site</h3><p>19th October 2026</p></div>
+      <div class="event"><time>2026</time><h3>Launched this site</h3><p>19th October 2026</p></div>
       <div class="event"><time>2025</time><h3>Started my degree</h3><p>BCA, Christ University</p></div>
-      <div class="event"><time>Earlier</time><h3>Wrote my first program</h3><p>Add what got you into tech.</p></div>
+      <div class="event"><time>Earlier</time><h3>Started learning to code</h3><p>Add what got you into tech.</p></div>
     </div>
   </div>
 </section>
@@ -183,51 +134,15 @@ footer{padding:28px 0;color:var(--muted);font-size:.92rem;text-align:center}
 <section class="contact" id="contact">
   <div class="wrap">
     <h2>Let’s build something together.</h2>
-    <!-- EDIT: your email -->
-    <a class="mail" href="mailto:you@example.com">alwinsajanm@hotmail.com</a>
+    <a class="mail" href="mailto:alwinsajanm@hotmail.com">alwinsajanm@hotmail.com</a>
     <div class="links">
-      <a href="https://github.com/alwinsajan" rel="noopener">GitHub</a>
-      <!-- EDIT or delete: add your LinkedIn -->
-      <a href="https://www.linkedin.com/in/alwin-sajan" rel="noopener">LinkedIn</a>
+      <a class="btn dark" href="https://www.linkedin.com/in/alwin-sajan" rel="noopener" target="_blank">Connect on LinkedIn</a>
     </div>
   </div>
 </section>
 </main>
 
-<footer><div class="wrap">© <span id="yr"></span> Alwin Sajan</div></footer>
-
-<script>
-document.getElementById('yr').textContent = new Date().getFullYear();
-
-const USER = 'alwinsajan';
-const list = document.getElementById('projects');
-const note = document.getElementById('proj-note');
-
-fetch('https://api.github.com/users/' + USER + '/repos?per_page=100&sort=updated')
-  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then(repos => {
-    const picks = repos
-      .filter(r => !r.fork && r.name.toLowerCase() !== USER + '.github.io')
-      .sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)))
-      .slice(0, 6);
-    if (!picks.length) throw new Error('empty');
-    picks.forEach(r => {
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = r.html_url; a.rel = 'noopener';
-      const left = document.createElement('div');
-      const h = document.createElement('h3'); h.textContent = r.name.replace(/[-_]/g, ' ');
-      const p = document.createElement('p'); p.textContent = r.description || 'A project on GitHub.';
-      left.append(h, p);
-      const m = document.createElement('div'); m.className = 'meta';
-      m.textContent = [r.language, r.stargazers_count ? '★ ' + r.stargazers_count : ''].filter(Boolean).join('  ');
-      a.append(left, m); li.append(a); list.append(li);
-    });
-    note.innerHTML = 'Pulled live from <a href="https://github.com/' + USER + '" rel="noopener">github.com/' + USER + '</a>. Add a description to a repo and it shows up here.';
-  })
-  .catch(() => {
-    note.innerHTML = 'Couldn’t load projects right now. See them all on <a href="https://github.com/' + USER + '" rel="noopener">GitHub</a>.';
-  });
-</script>
+<footer><div class="wrap">© <span class="yr"></span> Alwin Sajan</div></footer>
+<script src="script.js"></script>
 </body>
 </html>
